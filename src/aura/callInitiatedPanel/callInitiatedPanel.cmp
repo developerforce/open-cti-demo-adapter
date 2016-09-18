@@ -1,0 +1,45 @@
+<!--
+Copyright 2016 salesforce.com, inc. All rights reserved. 
+
+Use of this software is subject to the salesforce.com Developerforce Terms of Use and other applicable terms that salesforce.com may make available, as may be amended from time to time. You may not decompile, reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of this software, updates thereto, or any part thereof. You may not use the software to engage in any development activity that infringes the rights of a third party, including that which interferes with, damages, or accesses in an unauthorized manner the servers, networks, or other properties or services of salesforce.com or any third party.
+
+WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL SALESFORCE.COM HAVE ANY LIABILITY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR DAMAGES BASED ON LOST PROFITS, DATA OR USE, IN CONNECTION WITH THE SOFTWARE, HOWEVER CAUSED AND, WHETHER IN CONTRACT, TORT OR UNDER ANY OTHER THEORY OF LIABILITY, WHETHER OR NOT YOU HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+-->
+
+<aura:component description="panel that is shown on dialing, incoming or transferring calls before being connected that displays basic contact info for the call." implements="c:panel">
+    <aura:attribute name="state" type="String" />
+    <aura:attribute name="label" type="String" />
+    <aura:attribute name="recordName" type="String" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="account" type="Object" />
+    <aura:attribute name="title" type="String" />
+    <aura:attribute name="phone" type="String" />
+    <aura:attribute name="presence" type="String" description="Could be Available, Busy or Unavailable"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <div class="slds-panel">
+        <!--  Top section: Information about the contact, including an avatar -->
+        <div class="slds-panel__section">
+            <div class="avatar slds-align--absolute-center">
+                <div class="slds-avatar slds-avatar--circle slds-avatar--large">
+                    <img src="/resource/slds/assets/images/avatar1.jpg" alt="Contact" />
+                </div>
+            </div>
+            <div class="name slds-text-heading--large slds-text-color--weak slds-text-align--center">{!v.recordName}</div>
+            <div class="slds-text-heading--x-small slds-text-color--weak slds-text-align--center companyDetails">{!v.account.Name}</div>
+            <div class="slds-text-heading--x-small slds-text-color--weak slds-text-align--center companyDetails">{!v.title}</div>
+            <div class="incoming slds-text-heading--x-small slds-text-color--weak slds-text-align--center">{!v.state}&nbsp;<ui:outputphone value="{!v.phone}" />...</div>
+            <div class="slds-text-heading--x-small slds-text-color--weak slds-text-align--center"> <c:ticker /> </div>
+        </div>
+        
+       <!--  Bottom section: End button on Dialing; Decline and Accept buttons on Incoming or Transferring -->
+        <div class="bottom-panel slds-panel__section slds-align-bottom slds-grid">
+            <aura:if isTrue="{! v.state == 'Dialing'}">
+                <button class="slds-size--1-of-1 slds-button slds-button--destructive" onclick="{!c.end}">End</button>
+                <aura:set attribute="else">
+                    <button class="slds-size--1-of-2 slds-button slds-button--destructive" onclick="{!c.decline}">Decline</button>
+                    <button class="slds-size--1-of-2 slds-button slds-button--brand" onclick="{!c.accept}">Accept</button>
+                </aura:set>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

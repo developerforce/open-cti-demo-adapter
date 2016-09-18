@@ -1,0 +1,74 @@
+<!--
+Copyright 2016 salesforce.com, inc. All rights reserved. 
+
+Use of this software is subject to the salesforce.com Developerforce Terms of Use and other applicable terms that salesforce.com may make available, as may be amended from time to time. You may not decompile, reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of this software, updates thereto, or any part thereof. You may not use the software to engage in any development activity that infringes the rights of a third party, including that which interferes with, damages, or accesses in an unauthorized manner the servers, networks, or other properties or services of salesforce.com or any third party.
+
+WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL SALESFORCE.COM HAVE ANY LIABILITY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR DAMAGES BASED ON LOST PROFITS, DATA OR USE, IN CONNECTION WITH THE SOFTWARE, HOWEVER CAUSED AND, WHETHER IN CONTRACT, TORT OR UNDER ANY OTHER THEORY OF LIABILITY, WHETHER OR NOT YOU HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+-->
+
+<aura:component description="connected call screen, after accepting an incoming call or an outgoing call is answered" implements="c:panel">
+    <aura:attribute name="showDialPad" type="Boolean" description="True if dial pad is shown"/>
+    <aura:attribute name="account" type="Object" description="containing Name and Id of the associated account"/>
+    <aura:attribute name="recordId" type="String" description="Record ID of the contact"/>
+    <aura:attribute name="recordName" type="String" description="Record name, if ther's a matching record or phone number, if not"/>
+    <aura:attribute name="inputValue" type="String" description="Value of the input field, phone number from keypad"/>
+    <aura:attribute name="callType" type="string" description="The type of call being answered: Inbound, Internal, or Outbound"/>
+    <aura:attribute name="presence" type="String" description="Could be Available, Busy or Unavailable"/>
+    <aura:attribute name="transfercallDisabled" type="Boolean" default="true" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <div class="slds-panel panel">
+        <!--  Top section: Information about the contact -->
+        <div class="slds-panel__section connectedTop">
+            <aura:if isTrue="{! empty(v.recordId) }">
+                  <div class="slds-col--padded">{!v.callType} Call: <ui:outputPhone value="{!v.recordName}"/></div>
+              <aura:set attribute="else">
+                  <force:recordView recordId="{!v.recordId}" type="MINI" />
+              </aura:set>
+            </aura:if>
+        </div>
+        
+        <!--  Middle section: Ticker and show/hide dial pad button. The button is toggling between a notes area or a dial pad. -->
+        <div class="slds-panel__section slds-theme--shade slds-p-around--x-small">
+            <div class="slds-grid">
+                <div class="slds-col--padded status">Connected: <c:ticker aura:id="ticker"/></div>
+                <aura:if isTrue="{! and(v.showDialPad, v.inputValue.length >0) }">
+                    <span><c:svg class="slds-button__icon slds-button__icon--large slds-p-around--xx-small" xlinkHref="/resource/slds/assets/icons/utility-sprite/svg/symbols.svg#call"/> {!v.inputValue}</span>
+                </aura:if>
+                <div class="slds-col--padded slds-grow-none">
+                    <a onclick="{!c.toggleDialPad}">
+                      <button title="Transfer the call"
+                            class="{! 'slds-button slds-button--icon ' + (v.showDialPad ? 'slds-button--icon-inverse button-inv slds-button--icon-border-inverse': 'slds-button--icon slds-button--icon-border')}">
+                            <c:svg class="slds-button__icon slds-button__icon--large slds-p-around--xx-small"
+                                xlinkHref="/resource/slds/assets/icons/action-sprite/svg/symbols.svg#dial_in" />
+                            <span class="slds-assistive-text">Dialer</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <aura:if isTrue="{!v.showDialPad}">
+                <div class="slds-panel__section dialPad">
+                    <c:dialPad size="Small" keyClick="{!c.handleKeyClick}" />
+                </div>
+
+                <aura:set attribute="else">
+                    <div class="slds-size--1-of-1 slds-panel__section callNote">
+                        <ui:inputTextArea class="callNote" aura:id="note" rows="6" maxlength="32000"
+                            placeholder="Enter notes..." />
+                    </div>
+                </aura:set>
+            </aura:if>
+        </div>
+    </div>
+    
+    <!--  Bottom section: End and Transfer buttons -->  
+    <div class="slds-m-top--large slds-align-bottom slds-grid">
+        <aura:if isTrue="{!v.showDialPad}">                
+            <button aura:id="transfercall" class="slds-size--1-of-2 slds-button slds-button--neutral" disabled="{!v.transfercallDisabled}"
+                    onclick="{!c.transferCall}">Transfer</button>
+            <button aura:id="endcall" class="slds-size--1-of-2 slds-button slds-button--destructive" onclick="{!c.endCall}">End</button>  
+            <aura:set attribute="else">
+                <button aura:id="endcall" class="slds-size--1-of-1 slds-button slds-button--destructive" onclick="{!c.endCall}">End</button>
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

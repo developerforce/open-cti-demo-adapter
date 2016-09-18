@@ -51,8 +51,6 @@ In order to actualy making calls, you will need to integrate with a CTI provider
 Note: Want to make real calls with this demo adapter? We’ve made this super easy to do with Twilio. To integrate with Twilio, complete the following steps:
 Install the Twilio Salesforce Helper Library in your org. For more information, see https://www.twilio.com/docs/libraries/salesforce#installation. 
 
-In order to use the TwilioProvider, edit the inner class TwilioProvider inside the apex class SoftphoneProviderHelper, and uncomment the code there once you installed the Twilio Helper Package in your org. More info here: https://www.twilio.com/docs/libraries/salesforce#installation
-
 You’ll need the following information:
 
 1. CTI Provider—Apex class that implements SoftphoneProviderHelper.SoftphoneProvider, with makeCall() method, such as DummyProvider, TwilioProvider or your own provider implementation.

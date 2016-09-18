@@ -1,0 +1,53 @@
+<!--
+Copyright 2016 salesforce.com, inc. All rights reserved. 
+
+Use of this software is subject to the salesforce.com Developerforce Terms of Use and other applicable terms that salesforce.com may make available, as may be amended from time to time. You may not decompile, reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of this software, updates thereto, or any part thereof. You may not use the software to engage in any development activity that infringes the rights of a third party, including that which interferes with, damages, or accesses in an unauthorized manner the servers, networks, or other properties or services of salesforce.com or any third party.
+
+WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL SALESFORCE.COM HAVE ANY LIABILITY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR DAMAGES BASED ON LOST PROFITS, DATA OR USE, IN CONNECTION WITH THE SOFTWARE, HOWEVER CAUSED AND, WHETHER IN CONTRACT, TORT OR UNDER ANY OTHER THEORY OF LIABILITY, WHETHER OR NOT YOU HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+-->
+
+<aura:component description="dropdown that toggles online prescence" implements="c:panel">
+    <aura:attribute name="iconType" type="String" access="public"  description="icon type" />
+    <aura:attribute name="icon" type="Aura.Component[]" access="public" description="icon" />
+    <aura:attribute name="states" type="Object[]" description="possible states of the user" />
+    <aura:attribute name="presence" type="String" />
+	  <aura:registerEvent name="onlinePresenceChanged" type="c:onlinePresenceChanged" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <div aura:id="dropdownContainer" class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click"
+        aria-haspopup="true">
+        <div class="actionContainer" aura:id="hoverContainer">
+            <button class="slds-button slds-dropdown__item customDropdown" aria-haspopup="true"
+                aria-activedescendant="" onclick="{!c.toggleStatus}">
+                <div class="slds-grid">
+                    {!v.icon}
+                    <span class="slds-col--padded"> {!v.presence} </span>
+                    <div aria-hidden="true"
+                        class="slds-col--padded slds-icon slds-icon--x-small slds-icon-text-default slds-m-left--small slds-shrink-none">
+                        <c:svg class="slds-icon slds-icon--x-small slds-icon-text-default"
+                            xlinkHref="/resource/slds/assets/icons/utility-sprite/svg/symbols.svg#down" />
+                    </div>
+                </div>
+            </button>
+        </div>
+
+        <div class="slds-dropdown slds-dropdown--left slds-dropdown--small" aura:id="options">
+            <ul class="dropdown__list" role="menu">
+                <aura:iteration items="{!v.states}" var="state">
+                    <li class="slds-dropdown__item" role="presentation" data-value-name="{!state.status}" data-value-iconType="{!state.iconType}"
+                        onclick="{!c.handleSelection}"><a class="dropdown_item" href="javascript:void(0);">
+                        <span class="slds-truncate">
+                            <c:svg class="{! 'slds-icon slds-icon--x-small slds-icon-text-'+ (state.iconType) }"
+                                    xlinkHref="/resource/slds/assets/icons/utility-sprite/svg/symbols.svg#record" />
+                                <div class="slds-col--padded status_label">{!state.status}</div>
+                        </span>
+                    </a></li>
+                </aura:iteration>
+                <li class="slds-dropdown__item slds-has-divider--top-space" role="presentation"><a
+                    class="dropdown_item" href="javascript:void(0);" onclick="{!c.handleLogout}"> <span
+                        class="slds-truncate"> Log Out </span>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</aura:component>

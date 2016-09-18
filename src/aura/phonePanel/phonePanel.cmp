@@ -1,0 +1,70 @@
+<!--
+Copyright 2016 salesforce.com, inc. All rights reserved. 
+
+Use of this software is subject to the salesforce.com Developerforce Terms of Use and other applicable terms that salesforce.com may make available, as may be amended from time to time. You may not decompile, reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of this software, updates thereto, or any part thereof. You may not use the software to engage in any development activity that infringes the rights of a third party, including that which interferes with, damages, or accesses in an unauthorized manner the servers, networks, or other properties or services of salesforce.com or any third party.
+
+WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL SALESFORCE.COM HAVE ANY LIABILITY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR DAMAGES BASED ON LOST PROFITS, DATA OR USE, IN CONNECTION WITH THE SOFTWARE, HOWEVER CAUSED AND, WHETHER IN CONTRACT, TORT OR UNDER ANY OTHER THEORY OF LIABILITY, WHETHER OR NOT YOU HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+-->
+
+<aura:component description="Panel that is showing a toolbar and a search bar, and can toggle a dial pad or search results"
+    implements="c:panel">
+    <aura:attribute name="showDialPad" type="Boolean" default="false" description="when True, show dial pad"/>
+    <aura:attribute name="callDisabled" type="Boolean" default="true" description="when True, Call button is disabled"/>
+    <aura:attribute name="inputValue" type="String" description="Value of the input field, can be phone number of search term"/>
+    <aura:attribute name="presence" type="String" description="Could be Available, Busy or Unavailable"/>
+    <aura:attribute name="searchResults" type="Object[]" description="Array of contact records"/>
+    <aura:attribute name="message" type="String" default="Search for a contact" description="message that is shown on the screen"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler name="onlinePresenceChanged" action="{!c.onOnlinePresenceChanged}" />
+    <aura:registerEvent name="onlinePresenceChanged" type="c:onlinePresenceChanged" />
+    <div class="slds-panel">
+        <!--  Toolbar with status dropdown, help modal and other buttons -->
+        <c:phoneToolbar presence="{!v.presence}" />
+        
+        <!--  Search bar and dialpad toggle button -->
+        <aura:if isTrue="{!v.presence != 'Unavailable'}">
+            <div class="slds-panel__section slds-grid slds-theme--shade slds-p-around--small">
+              <ui:inputText class="slds-input slds-col--padded slds-m-right--medium slds-text-align--centern placeHolderText" aura:id="keyboardInput"
+                    value="{!v.inputValue}" keyup="{!c.handleKeyUp}" placeholder="Enter a name or number..." />
+                <a onclick="{!c.toggleDialPad}">
+                        <button title="Dial pad"
+                            class="{! 'slds-button slds-button--icon ' + (v.showDialPad ? 'slds-button--icon-inverse button-inv slds-button--icon-border-inverse': 'slds-button--icon slds-button--icon-border')}">
+                            <c:svg class="slds-button__icon slds-button__icon--large slds-p-around--xx-small"
+                                xlinkHref="/resource/slds/assets/icons/action-sprite/svg/symbols.svg#dial_in" />
+                            <span class="slds-assistive-text">Dial pad</span>
+                        </button>
+                </a>
+            </div>
+        </aura:if>
+        
+        <!--  Main section: Message, search results or dialpad  -->
+        <aura:if isTrue="{!v.showDialPad}">
+            <div class="slds-panel__section">
+                <c:dialPad keyClick="{!c.handleKeyClick}" />
+            </div>
+            <div class="slds-panel__section slds-grid">
+                 <button class="slds-button slds-button--brand slds-size--1-of-1" disabled="{!v.callDisabled}" aura:id="callButton"
+                    onclick="{!c.searchAndCallNumber}">Call</button>
+            </div>
+        </aura:if>
+        <aura:if isTrue="{! and(v.searchResults.length == 0, ! v.showDialPad) }">
+            <div aura:id="message"
+                class="messageBody slds-p-around--xx-large slds-align--absolute-center slds-text-heading">{!v.message}</div>
+        </aura:if>
+        <aura:if isTrue="{! v.searchResults.length }">
+                <div class="slds-p-around--small slds-text-heading--label slds-truncate">Search Results</div>
+                <aura:iteration items="{!v.searchResults}" var="res" indexVar="i">
+                    <a data-value="{!i}" aura:id="{!i}" onclick="{!c.handleSelectCard}" href="javascript:void(0);">
+                        <div
+                            class="slds-p-around--small slds-card slds-grid slds-grid--vertical-align-center">
+                            <span class="slds-size--1-of-8 slds-avatar">
+                                <img class="contact" src="/resource/slds/assets/icons/standard/contact_120.png" alt="contact name"/>
+                            </span>
+                            <div class="slds-size--4-of-8 slds-text-body--small slds-text-align--center">{!res.Name}</div>
+                            <div class="slds-size--3-of-8 slds-text-body--small slds-text-align--right"><ui:outputPhone value="{!res.Phone}"/></div>
+                        </div>
+                    </a>
+                </aura:iteration>
+        </aura:if>
+    </div>
+</aura:component>

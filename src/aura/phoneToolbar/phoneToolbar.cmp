@@ -1,0 +1,75 @@
+<!--
+Copyright 2016 salesforce.com, inc. All rights reserved. 
+
+Use of this software is subject to the salesforce.com Developerforce Terms of Use and other applicable terms that salesforce.com may make available, as may be amended from time to time. You may not decompile, reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of this software, updates thereto, or any part thereof. You may not use the software to engage in any development activity that infringes the rights of a third party, including that which interferes with, damages, or accesses in an unauthorized manner the servers, networks, or other properties or services of salesforce.com or any third party.
+
+WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL SALESFORCE.COM HAVE ANY LIABILITY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR DAMAGES BASED ON LOST PROFITS, DATA OR USE, IN CONNECTION WITH THE SOFTWARE, HOWEVER CAUSED AND, WHETHER IN CONTRACT, TORT OR UNDER ANY OTHER THEORY OF LIABILITY, WHETHER OR NOT YOU HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+-->
+
+<aura:component description="toolbar that contains help information and a few buttons." implements="c:panel">
+    <aura:attribute name="presence" type="String" description="Could be Available, Busy or Unavailable"/>
+    <div class="slds-grid slds-m-around--x-small">
+        <div class="slds-col slds-has-flexi-truncate">
+            <c:statusDropdown presence="{!v.presence}"/>
+        </div>
+        <div class="slds-col slds-no-flex">
+            <div class="slds-button-group">
+                <aura:if isTrue="{!v.presence == 'Available'}">
+                <button title="Simulate an incoming call" class="slds-button slds-col--padded slds-icon-text-default" onclick="{!c.simulateIncomingCall}">
+                    <c:svg class="slds-m-left--medium slds-button__icon customIcon"
+                        xlinkHref="/resource/slds/assets/icons/utility-sprite/svg/symbols.svg#call" />
+                </button>
+              </aura:if>
+                <button title="Help" class="slds-button slds-icon-text-default" onclick="{!c.showModal}">
+                    <c:svg class="slds-button__icon customIcon"
+                        xlinkHref="/resource/slds/assets/icons/utility-sprite/svg/symbols.svg#help" />
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="slds-backdrop slds-backdrop--open" id="backGroundSectionId" style="display: none;">
+        <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-button--icon-inverse slds-modal__close" onclick="{!c.showHelp}">
+                        <c:svg class="slds-button__icon slds-button__icon--large"
+                            xlinkHref="/resource/slds/assets/icons/action-sprite/svg/symbols.svg#close" />
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 class="slds-text-heading--small">Say Hello to Open CTI</h2>
+                </div>
+                <div class="slds-modal__content slds-p-around--medium">
+                    <div class="slds-text-body--regular helpBody">
+                        <p>Connect your telephony system to Salesforce and boost user productivity. With Open CTI, you can show related Salesforce information for incoming calls, dial numbers directly from Salesforce, report on call outcome, and more. This demo adapter doesn’t connect to a real telephony system. Use it to learn about Open CTI functionality.</p>
+                        <br></br>
+                        <h3 class="subHeader">Get Started</h3>
+                        <ul class="slds-list--dotted slds-has-dividers--left">
+                            <li>Log in with your Salesforce credentials, or click <b>Log In</b>.</li>
+                            <li>To simulate an incoming call, click <button class="slds-button">
+                            <c:svg class="slds-button__icon"
+                            xlinkHref="/resource/slds/assets/icons/utility-sprite/svg/symbols.svg#call" />
+                            </button> in the softphone header.</li>
+                            <li>To simulate an outbound call, click any number in Salesforce, type a number, or use the dialpad.</li>
+                            <li>To update the screen pop target for the simulated incoming call, go to the Call Centers page in Setup and edit the demo adapter. Then update the Simulated Incoming Phone Number field.</li>
+                        </ul>
+                        <br></br>
+                        <p>The demo adapter is supported on Chrome, Firefox, and Safari.</p>
+                        <br></br>
+                        <h3 class="subHeader">Resources:</h3>
+                        <div class="slds-size--1-of-1">
+                            <a class="slds-col--padded" target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.api_cti.meta/usage_cti/">Get Started with the Demo Adapter</a>
+                        </div>
+                        <div class="slds-size--1-of-1">
+                            <a class="slds-col--padded" target="_blank" href="https://help.salesforce.com/apex/HTViewHelpDoc?id=cti_overview.htm">Call Center Overview</a>
+                        </div>
+                        <div class="slds-size--1-of-1">
+                            <a class="slds-col--padded" target="_blank"
+                            href="https://developer.salesforce.com/docs/atlas.en-us.api_cti.meta/api_cti/">Open CTI Developer Guide</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop--open"></div>
+    </div>
+</aura:component>
