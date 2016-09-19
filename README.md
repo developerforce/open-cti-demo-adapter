@@ -6,8 +6,9 @@ The package provides a demo softphone that highlights and demonstrates the main 
 
 # Dependencies
 
-1. You will need ant to deploy. To contribute to this project you will need Eclipse 4.3+, with the force plugin.
-OR You can also download the package from: https://login.salesforce.com/packaging/installPackage.apexp?p0=04tB00000003tV0 
+You will need ant to deploy. To contribute to this project you will need Eclipse 4.3+, with the force plugin.
+
+OR you can download and install this app as a package from: https://login.salesforce.com/packaging/installPackage.apexp?p0=04tB00000003tV0 
 
 Important: You can only install this package in pre-release orgs. To sign up for a pre-release org, visit the Winter  ’17 Pre-Release page. Sign up for an Enterprise Edition org. 
 
