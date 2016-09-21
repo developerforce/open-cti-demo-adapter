@@ -1,3 +1,5 @@
+var args;
+
 /**
  * @param {Object} args
  * @param {Function} args.callback
