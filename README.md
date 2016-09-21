@@ -26,6 +26,7 @@ Important: You can only install this package in pre-release orgs. To sign up for
 3. Import this project into eclipse.
 4. Deploying from Eclipse only works with https, so by default you cannot deploy to local orgs from eclipse.
 5. If you use https: When you right click on the folder open-cti-demo-adapter --> Force.com, you will see the options "deploy to server" and "refresh from server". To download artifacts (such as VF pages) from your org use "refresh from server". To deploy the code in the repo, or if you make changes, use "deploy to server".
+6. Use the sample code [here](open-cti-code-samples.js) to see how to call the Open CTI API from your app.
 
 # Usage
 
