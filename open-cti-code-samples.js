@@ -1,4 +1,8 @@
-var args;
+/* Include this in your html
+<script src="https://<your salesforce url>/support/api/38.0/lightning/opencti_min.js" type="text/javascript"></script>
+
+and then use one of the samples below inside a script tag.
+*/
 
 /**
  * @param {Object} args
@@ -11,7 +15,7 @@ args = {
 };
 sforce.opencti.enableClickToDial(args)
 
-
+/** additional sample code 
 /**
  * @param {Object} args
  * @param {Function} args.callback
