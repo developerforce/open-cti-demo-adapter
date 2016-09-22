@@ -7,7 +7,9 @@ This CTI demo adapter package lets you test drive Open CTI for Lightning Experie
 
 To deploy, you need ANT.
 To contribute to this project, you need Eclipse version 4.3 or higher, with the Force.com IDE plug-in.
+
 You can also download and install this app as a package from: https://login.salesforce.com/packaging/installPackage.apexp?p0=04tB00000003tV0
+
 Important: You can only install this package in pre-release orgs. To sign up for a pre-release org, visit the [Winter ’17 Pre-Release page](https://www.salesforce.com/form/signup/prerelease-winter17.jsp). Sign up for an Enterprise Edition org.
 
 # Deploy via Ant
@@ -51,15 +53,6 @@ To deploy the code using ANT, you must add a custom domain to your Salesforce or
 
 # Call Center Settings
 
-
-General Settings
-If you don’t see the softphone in your app or the softphone doesn’t launch, verify the CTI adapter URL is correct. To edit the CTI Adapter URL:
-In your Salesforce org, go to Setup and enter Call Centers in the Quick Find box, then click Call Centers.
-https://myDomainName.lightning.force.com/apex/demoAdapterPage
-https://myDomainName.lightning.<yourInstance>.force.com/apex/demoAdapterPage
-Click **Save**.
-
-
 For the demo adapter to work properly, you might need to update some settings.
 
 ## General Settings
@@ -72,11 +65,12 @@ If you don’t see the softphone in your app or the softphone doesn’t launch, 
   * https://<myDomain>.lightning.force.com/apex/demoAdapterPage
   * https://<myDomain>.lightning.<yourInstance>.force.com/apex/demoAdapterPage
 
-3. Click Save
+3. Click **Save**
 
 To change the phone number used to simulate incoming calls, edit the Simulated Incoming Phone Number field on the Demo Call Center Adapter page in Setup. The default phone number used to simulate incoming calls is 415-555-1212.
 
 ## CTI Provider Settings
+
 Want to make *real* calls with this demo adapter? We’ve made this super easy to do with Twilio. To integrate with Twilio, complete the following steps:
 
 1. Install the [Twilio Salesforce Helper Library](https://www.twilio.com/docs/libraries/salesforce#installation) in your org.
