@@ -62,8 +62,9 @@ If you don’t see the softphone in your app or the softphone doesn’t launch, 
 1. In your Salesforce org, go to Setup and enter Call Centers in the Quick Find box, then click Call Centers.
 
 2. Click Edit next to the Demo Call Center Adapter and make sure that the CTI Adapter URL points to the absolute path of the Visualforce page called demoAdapterPage. The URL must include the Lightning path and your domain. For example, both of the following URLs are valid:
-  * https://<myDomain>.lightning.force.com/apex/demoAdapterPage
-  * https://<myDomain>.lightning.<yourInstance>.force.com/apex/demoAdapterPage
+  * https://myDomain.lightning.force.com/apex/demoAdapterPage
+  * https://myDomain.lightning.instanceName.force.com/apex/demoAdapterPage
+  * https://
 
 3. Click **Save**
 
