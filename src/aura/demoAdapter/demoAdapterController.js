@@ -12,17 +12,6 @@ WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS I
         if (!(sforce && sforce.opencti)) {
           throw new Error('Unable to load Open CTI. Update Call Center settings or contact your admin.');
         }
-        sforce.opencti.getCallCenterSettings({
-            callback : function(response) {
-                if (response.success) {
-                    cmp.set('v.settings', response.returnValue);
-                } else {
-                    throw new Error(
-                        'Unable to load call center settings. Contact your admin.')
-                }
-            }
-        })
-
         cmp.getEvent('renderPanel').setParams({
             type: 'c:ctiLoginPanel',
         }).fire();
@@ -37,7 +26,7 @@ WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS I
     // getSettings event handler. Returns the stored call center settings.
     getSettings: function(cmp, event, helper) {
         var callback = event.getParams().callback;
-        callback(cmp.get('v.settings'));
+        helper.getCallCenterSettings(cmp, callback);
     },
 
     // editPanel event handler. Updates the softphone panel label.
