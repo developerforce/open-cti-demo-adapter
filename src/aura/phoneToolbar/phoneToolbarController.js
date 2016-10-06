@@ -7,43 +7,35 @@ WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS I
 */
 
 ({
-    // bring up the help window
-    showModal : function(cmp, event, helper) {
-        // TODO: Try not to reference `document`.
-        document.getElementById('backGroundSectionId').style.display = 'block';
-    },
-
-    // close the help window
-    showHelp : function(cmp, event, helper) {
-        // TODO: Try not to reference `document`.
-        document.getElementById('backGroundSectionId').style.display = 'none';
-    },
-
-    // get the incoming phone number from call center settings, then if there's a matching record
-    // bring up a call panel with the record details.
-    simulateIncomingCall : function(cmp, event, helper) {
-        cmp.getEvent('getSettings').setParams({
-            callback: function(settings) {
-                var number = settings['/reqPhoneDemoSettings/reqIncomingNumber'];
-                helper.search(cmp, number, function(cmp, result) {
-                    var record = result ? result : {
-                        Name : number
-                    };
-                    cmp.getEvent('renderPanel').setParams({
-                        type : 'c:callInitiatedPanel',
-                        attributes : {
-                            'state' : 'Incoming',
-                            'recordName' : record.Name,
-                            'phone' : record.Phone,
-                            'title' : record.Title,
-                            'account' : record.Account,
-                            'recordId' : record.Id,
-                            'presence' : cmp.get('v.presence')
-                        }
-                    }).fire();
-                })
-            }
+    // store call center settings, so they're easily accessible ny all panels. Bring up the CTI login panel.
+    init: function(cmp, event, helper) {
+        if (!(sforce && sforce.opencti)) {
+          throw new Error('Unable to load Open CTI. Update Call Center settings or contact your admin.');
+        }
+        cmp.getEvent('renderPanel').setParams({
+            type: 'c:ctiLoginPanel',
         }).fire();
-
     },
+
+    // renderPanel event handler. Used to replace the current view with a given panel.
+    renderPanel: function(cmp, event, helper) {
+        var params = event.getParams();
+        helper.renderPanel(cmp, params);
+    },
+
+    // getSettings event handler. Returns the stored call center settings.
+    getSettings: function(cmp, event, helper) {
+        var callback = event.getParams().callback;
+        helper.getCallCenterSettings(cmp, callback);
+    },
+
+    // editPanel event handler. Updates the softphone panel label.
+    editPanel: function(cmp, event, helper) {
+        var params = event.getParams();
+        if (params.label) {
+            sforce.opencti.setSoftphonePanelLabel({
+                label: params.label
+            });
+        }
+    }
 })
