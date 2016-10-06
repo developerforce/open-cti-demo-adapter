@@ -35,4 +35,23 @@ WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS I
             });
         }
     },
+    
+    // first time this method is called, it will fetch the settings using opencti.getCallCenterSettings 
+    getCallCenterSettings: function(cmp, callbackFunc) {
+        if (callbackFunc && cmp.get('v.settings')) {
+            callbackFunc(cmp.get('v.settings'));
+        } else {   //first time call
+            sforce.opencti.getCallCenterSettings({
+                callback : function(response) {
+                    if (response.success) {
+                        cmp.set('v.settings', response.returnValue);
+                        callbackFunc(cmp.get('v.settings'));
+                    } else {
+                        throw new Error(
+                            'Unable to load call center settings. Contact your admin.')
+                    }
+                }
+            })
+        }
+    }
 })
