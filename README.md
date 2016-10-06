@@ -8,7 +8,7 @@ This CTI demo adapter package lets you test drive Open CTI for Lightning Experie
 To deploy, you need ANT.
 To contribute to this project, you need Eclipse version 4.3 or higher, with the Force.com IDE plug-in.
 
-You can also download and install this app as a package from: https://login.salesforce.com/packaging/installPackage.apexp?p0=04tB00000003tV0
+You can also download and install this app as a package from: https://login.salesforce.com/packaging/installPackage.apexp?p0=04tB00000003tV5
 
 Important: You can only install this package in pre-release orgs. To sign up for a pre-release org, visit the [Winter ’17 Pre-Release page](https://www.salesforce.com/form/signup/prerelease-winter17.jsp). Sign up for an Enterprise Edition org.
 
@@ -64,7 +64,6 @@ If you don’t see the softphone in your app or the softphone doesn’t launch, 
 2. Click Edit next to the Demo Call Center Adapter and make sure that the CTI Adapter URL points to the absolute path of the Visualforce page called demoAdapterPage. The URL must include the Lightning path and your domain. For example, both of the following URLs are valid:
   * https://myDomain.lightning.force.com/apex/demoAdapterPage
   * https://myDomain.lightning.instanceName.force.com/apex/demoAdapterPage
-  * https://
 
 3. Click **Save**
 
