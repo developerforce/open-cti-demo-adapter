@@ -7,11 +7,8 @@ WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS I
 */
 
 ({
-    // store call center settings, so they're easily accessible ny all panels. Bring up the CTI login panel.
+    // Bring up the CTI login panel.
     init: function(cmp, event, helper) {
-        if (!(sforce && sforce.opencti)) {
-          throw new Error('Unable to load Open CTI. Update Call Center settings or contact your admin.');
-        }
         cmp.getEvent('renderPanel').setParams({
             type: 'c:ctiLoginPanel',
         }).fire();
