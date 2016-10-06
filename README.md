@@ -8,7 +8,7 @@ This CTI demo adapter package lets you test drive Open CTI for Lightning Experie
 To deploy, you need ANT.
 To contribute to this project, you need Eclipse version 4.3 or higher, with the Force.com IDE plug-in.
 
-You can also download and install this app as a package from: https://login.salesforce.com/packaging/installPackage.apexp?p0=04tB00000003tV5
+You can also download and install this app as a package from: https://login.salesforce.com/packaging/installPackage.apexp?p0=04tB00000004lxw
 
 Important: You can only install this package in pre-release orgs. To sign up for a pre-release org, visit the [Winter ’17 Pre-Release page](https://www.salesforce.com/form/signup/prerelease-winter17.jsp). Sign up for an Enterprise Edition org.
 
