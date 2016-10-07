@@ -2,6 +2,7 @@
 
 This CTI demo adapter package lets you test drive Open CTI for Lightning Experience. The package provides a demo softphone that highlights and demonstrates the main features of Open CTI for Lightning Experience without even connecting to a phone system. 
 
+If you encounter any issues with this package, please file a [New Issue](https://github.com/developerforce/open-cti-demo-adapter/issues/new). You may also contact David Louvton, at dlouvton@salesforce.com. 
 
 # Dependencies
 
