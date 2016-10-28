@@ -9,9 +9,7 @@ If you encounter any issues with this package, please file a [New Issue](https:/
 To deploy, you need ANT.
 To contribute to this project, you need Eclipse version 4.3 or higher, with the Force.com IDE plug-in.
 
-You can also download and install this app as a package from: https://login.salesforce.com/packaging/installPackage.apexp?p0=04tB00000004lxw
-
-Important: You can only install this package in pre-release orgs. To sign up for a pre-release org, visit the [Winter ’17 Pre-Release page](https://www.salesforce.com/form/signup/prerelease-winter17.jsp). Sign up for an Enterprise Edition org.
+You can also download and install this app as a package from: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t41000000y4QJ
 
 # Deploy via Ant
 
@@ -86,3 +84,8 @@ You’ll need the following information:
 3. Optionally, modify the default task page layout for your call center users.
 For every call made with the demo adapter, the call log creates a task. To see the call-related fields on these tasks, assign the page layout Demo Call Task Layout to your call center users. For more information, see [Assigning Page Layouts](https://help.salesforce.com/apex/HTViewHelpDoc?id=customize_layoutassign.htm&language=en_US) in the Salesforce Help.
 
+## More information
+1. [Get Started with the Demo Adapter](https://developer.salesforce.com/page/Lightning_Open_CTI)
+2. [Call Center Overview](https://help.salesforce.com/apex/HTViewHelpDoc?id=cti_overview.htm)
+3. [Open CTI Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.api_cti.meta/api_cti/)
+4. Email me at dlouvton@salesforce.com 
