@@ -1,5 +1,5 @@
 <!--
-Copyright 2016 salesforce.com, inc. All rights reserved. 
+Copyright 2016 salesforce.com, inc. All rights reserved.
 
 Use of this software is subject to the salesforce.com Developerforce Terms of Use and other applicable terms that salesforce.com may make available, as may be amended from time to time. You may not decompile, reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of this software, updates thereto, or any part thereof. You may not use the software to engage in any development activity that infringes the rights of a third party, including that which interferes with, damages, or accesses in an unauthorized manner the servers, networks, or other properties or services of salesforce.com or any third party.
 
@@ -57,7 +57,7 @@ WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS I
                         <br></br>
                         <h3 class="subHeader">Resources:</h3>
                         <div class="slds-size--1-of-1">
-                            <a class="slds-col--padded" target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.api_cti.meta/usage_cti/">Get Started with the Demo Adapter</a>
+                            <a class="slds-col--padded" target="_blank" href="https://developer.salesforce.com/page/Lightning_Open_CTI">Get Started with the Demo Adapter</a>
                         </div>
                         <div class="slds-size--1-of-1">
                             <a class="slds-col--padded" target="_blank" href="https://help.salesforce.com/apex/HTViewHelpDoc?id=cti_overview.htm">Call Center Overview</a>
