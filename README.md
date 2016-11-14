@@ -9,7 +9,7 @@ If you encounter any issues with this package, please file a [New Issue](https:/
 To deploy, you need ANT.
 To contribute to this project, you need Eclipse version 4.3 or higher, with the Force.com IDE plug-in.
 
-You can also download and install this app as a package from: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t41000000y4QJ
+You can also download and install this app as a package from: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t41000000bSXh
 
 # Deploy via Ant
 
