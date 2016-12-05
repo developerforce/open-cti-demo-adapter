@@ -8,7 +8,7 @@ WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS I
 
 <aura:component description="Dial pad for demo adapter">
 	<aura:attribute name="_keys" type="List" description="Set in init: buttons shown on dial pad"/>
-    <aura:attribute name="size" type="String" default=""/>
+	<aura:attribute name="size" type="String" default=""/>
 	<aura:registerEvent name="keyClick" type="c:dialPadClick" description="Fired when a key is clicked"/>
 	<aura:handler name="init" value="{!this}" action="{!c.init}"/>
 	<div class="slds-grid slds-wrap">
