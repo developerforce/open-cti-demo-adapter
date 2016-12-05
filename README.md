@@ -88,4 +88,4 @@ For every call made with the demo adapter, the call log creates a task. To see t
 1. [Get Started with the Demo Adapter](https://developer.salesforce.com/page/Lightning_Open_CTI)
 2. [Call Center Overview](https://help.salesforce.com/apex/HTViewHelpDoc?id=cti_overview.htm)
 3. [Open CTI Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.api_cti.meta/api_cti/)
-4. Email me at dlouvton@salesforce.com 
+4. Email the author, David Louvton, at dlouvton@salesforce.com or create a [New Issue](https://github.com/developerforce/open-cti-demo-adapter/issues/new).
