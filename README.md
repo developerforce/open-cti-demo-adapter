@@ -66,6 +66,8 @@ If you don’t see the softphone in your app or the softphone doesn’t launch, 
 
 Note that if you are using a page from a managed package, the url will look like https://namespace-dev-ed.my.salesforce.com/apex/namespace__page
 
+When the absolute URL doesn't work, open the chrome inspector look for an error like: 'Blocked a frame with origin "https://myDomain.my.salesforce.com" from accessing a cross-origin frame'. This is a clue that your CTI Adapter URL must start with https://myDomain.my.salesforce.com or whatever the error said that is blocked.
+
 3. Click **Save**
 
 To change the phone number used to simulate incoming calls, edit the Simulated Incoming Phone Number field on the Demo Call Center Adapter page in Setup. The default phone number used to simulate incoming calls is 415-555-1212.
