@@ -8,7 +8,7 @@ WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS I
 
 <apex:page>
     <apex:includeLightning/>
-    <script type="text/javascript" src="/support/api/38.0/lightning/opencti.js"></script>
+    <script type="text/javascript" src="/support/api/42.0/lightning/opencti.js"></script>
     <div id="lightning"></div>
 
     <script type="text/javascript">
