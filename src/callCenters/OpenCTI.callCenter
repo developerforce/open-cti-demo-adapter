@@ -14,7 +14,7 @@
         <items>
             <label>CTI Adapter URL2</label>
             <name>reqStandbyUrl</name>
-            <value>/apex/demoAdapterPage2</value>
+            <value>/apex/demoAdapterPage</value>
         </items>
         <items>
             <label>Timeout</label>
