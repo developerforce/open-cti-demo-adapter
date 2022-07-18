@@ -1,95 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CallCenter xmlns="http://soap.sforce.com/2006/04/metadata">
-    <adapterUrl>/apex/demoAdapterPage</adapterUrl>
-    <customSettings>{&quot;reqTimeout&quot;:&quot;10000&quot;,&quot;reqStandbyUrl&quot;:&quot;/apex/demoAdapterPage2&quot;,&quot;reqSoftphoneHeight&quot;:&quot;550&quot;,&quot;reqSoftphoneWidth&quot;:&quot;400&quot;,&quot;reqUseApi&quot;:&quot;true&quot;,&quot;reqSalesforceCompatibilityMode&quot;:&quot;Classic_and_Lightning&quot;}</customSettings>
-    <displayName>Demo Call Center Adapter</displayName>
-    <displayNameLabel>Display Name</displayNameLabel>
-    <internalNameLabel>InternalName</internalNameLabel>
-    <sections>
-        <items>
-            <label>CTI Adapter URL</label>
-            <name>reqAdapterUrl</name>
-            <value>/apex/demoAdapterPage</value>
-        </items>
-        <items>
-            <label>CTI Adapter URL2</label>
-            <name>reqStandbyUrl</name>
-            <value>/apex/demoAdapterPage</value>
-        </items>
-        <items>
-            <label>Timeout</label>
-            <name>reqTimeout</name>
-            <value>10000</value>
-        </items>
-        <items>
-            <label>Use CTI API</label>
-            <name>reqUseApi</name>
-            <value>true</value>
-        </items>
-        <items>
-            <label>Softphone Height</label>
-            <name>reqSoftphoneHeight</name>
-            <value>550</value>
-        </items>
-        <items>
-            <label>Softphone Width</label>
-            <name>reqSoftphoneWidth</name>
-            <value>400</value>
-        </items>
-        <items>
-            <label>Salesforce Compatibility Mode</label>
-            <name>reqSalesforceCompatibilityMode</name>
-            <value>Classic_and_Lightning</value>
-        </items>
-        <label>General Information</label>
-        <name>reqGeneralInfo</name>
-    </sections>
-    <sections>
-        <items>
-            <label>Outside Prefix</label>
-            <name>reqOutsidePrefix</name>
-            <value>9</value>
-        </items>
-        <items>
-            <label>Long Distance Prefix</label>
-            <name>reqLongDistPrefix</name>
-            <value>1</value>
-        </items>
-        <items>
-            <label>International Prefix</label>
-            <name>reqInternationalPrefix</name>
-            <value>01</value>
-        </items>
-        <label>Dialing Options</label>
-        <name>reqDialingOptions</name>
-    </sections>
-    <sections>
-        <items>
-            <label>Simulated Incoming Phone Number</label>
-            <name>reqIncomingNumber</name>
-            <value>(415) 555-1212</value>
-        </items>
-        <items>
-            <label>CTI Provider</label>
-            <name>reqProvider</name>
-            <value>DummyProvider</value>
-        </items>
-        <items>
-            <label>Provider Account</label>
-            <name>reqProviderAccount</name>
-            <value>AXXXXXXXXXXXXXXXXX</value>
-        </items>
-        <items>
-            <label>Provider Auth Token</label>
-            <name>reqProviderAuthToken</name>
-            <value>YYYYYYYYYYYYYYYYYY</value>
-        </items>
-        <items>
-            <label>Provider Caller Number</label>
-            <name>reqProviderCallerNumber</name>
-            <value>415555555</value>
-        </items>
-        <label>Phone Demo Settings</label>
-        <name>reqPhoneDemoSettings</name>
-    </sections>
-</CallCenter>
+<callCenter>
+    <section sortOrder="0" name="reqGeneralInfo" label="General Information">
+        <item sortOrder="0" name="reqInternalName" label="InternalName">OpenCTI</item>
+        <item sortOrder="1" name="reqDisplayName" label="Display Name">Demo Call Center Adapter</item>
+        <item sortOrder="2" name="reqAdapterUrl" label="CTI Adapter URL">/apex/demoAdapterPage</item>
+        <item sortOrder="3" name="reqStandbyUrl" label="CTI Adapter URL2">/apex/demoAdapterPage</item>
+        <item sortOrder="4" name="reqUseApi" label="Use CTI API">true</item>
+        <item sortOrder="5" name="reqTimeout" label="Timeout">10000</item>
+        <item sortOrder="6" name="reqSoftphoneHeight" label="Softphone Height">550</item>
+        <item sortOrder="7" name="reqSoftphoneWidth" label="Softphone Width">400</item>
+        <item sortOrder="8" name="reqSalesforceCompatibilityMode" label="Salesforce Compatibility Mode">Classic_and_Lightning</item>
+    </section>
+    <section sortOrder="1" name="reqDialingOptions" label="Dialing Options">
+        <item sortOrder="0" name="reqOutsidePrefix" label="Outside Prefix">9</item>
+        <item sortOrder="1" name="reqLongDistPrefix" label="Long Distance Prefix">1</item>
+        <item sortOrder="2" name="reqInternationalPrefix" label="International Prefix">01</item>
+    </section>
+    <section sortOrder="2" name="reqPhoneDemoSettings" label="Phone Demo Settings">
+      <item sortOrder="0" name="reqIncomingNumber" label="Simulated Incoming Phone Number">(415) 555-1212</item>
+      <item sortOrder="1" name="reqProvider" label="CTI Provider">DummyProvider</item>
+      <item sortOrder="2" name="reqProviderAccount" label="Provider Account">AXXXXXXXXXXXXXXXXX</item>
+      <item sortOrder="3" name="reqProviderAuthToken" label="Provider Auth Token">YYYYYYYYYYYYYYYYYY</item>
+      <item sortOrder="4" name="reqProviderCallerNumber" label="Provider Caller Number">415555555</item>
+    </section>
+</callCenter>
